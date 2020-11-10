@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<title>ICS6 Bootstrap</title>
+ 	<link href="http://e-learning.bmstu.ru/moodle/pluginfile.php/7546/mod_folder/content/0/bootstrap.min.css" rel="stylesheet">
+ 	<style>
+ 		.green 
+ 		{ 
+ 			color: #008000; 
+ 			font-weight: bold;
+ 		}
+ 		html 
+ 		{
+ 			position: relative;
+ 			min-height: 100%;
+ 		}
+ 		body { margin-bottom: 40px; }
+ 		main { margin-top: 15px; }
+ 		footer
+ 		{
+ 			height: 40px;
+ 			position: absolute;
+ 			bottom: 0;
+ 			width: 100%;
+ 		}
+ 		.my-primary 
+ 		{
+ 			background-color: #008000;
+ 			color: white;
+ 		}
+ 	</style>
+</head>
+<body>
+ 	<header>
+ 		<nav class="navbar navbar-expand-lg navbar-dark my-primary">
+ 			<a class="navbar-brand" href="#">Navbar</a>
+ 			<ul class="navbar-nav mr-auto">
+ 				<li class="nav-item active">
+ 					<a class="nav-link" href="#">Home
+ 						<span class="sr-only">(current)</span>
+ 					</a>
+ 				</li>
+ 				<li class="nav-item">
+ 					<a class="nav-link" href="#">Link</a>
+ 				</li>
+ 			</ul>
+ 		</nav>
+ 	</header>
+ 	<main class="container">
+ 		<div class="row">
+ 			<div class="col-4">
+ 				<img src=" http://e-learning.bmstu.ru/moodle/pluginfile.php/7546/mod_folder/content/0/avatar.jpg" alt="avatar" width="150" height="150">
+ 			</div>
+ 			<div class="col-8">
+ 				<p>"Но лишь в больные времена величья зрееют семена"<br />
+ 					<span class="green">Чуев А.С.</span></p>
+ 			</div>
+ 		</div>
+		<div class="row">
+ 			<div class="col-8">
+ 				<h2>Регистрация заявки на сайте гильдии</h2>
+	<form class="form">
+		<table>
+			<tr>
+				<td>Почта</td>
+				<td> <input type="text" name="email"></td>
+				<td>Название сервера</td>
+				<td> <input type="text" name="realm"></td>
+			</tr>
+			<tr>
+				<td>Реальное имя</td>
+				<td> <input type="text" name="rname"></td>
+				<td>Имя персонажа</td>
+				<td> <input type="text" name="fname"></td>
+			</tr>
+			<tr>
+				<td rowspan="2">Пол</td>
+				<td> <input type="radio" name="gender">M</td>
+				<td>Раса</td>
+				<td> <input type="text" name="race"></td>
+			</tr>
+			<tr>
+				<td> <input type="radio" name="gender">Ж</td>
+				<td>Класс</td>
+				<td> <input type="text" name="class"></td>
+			</tr>
+			<tr>
+				<td>Пароль</td>
+				<td> <input type="password" name="passo"></td>
+				<td>Специализация</td>
+				<td> <input type="text" name="spec"></td>
+			</tr>
+			<tr>
+				<td>Повторите пароль</td>
+				<td> <input type="password" name="passt"></td>
+				<td>Уровень экипировки</td>
+				<td> <input type="text" name="ilvl"></td>
+			</tr>
+			<tr>
+				<td colspan="4"> <input type="submit" value="Подтвердить" class="btn btn-success"></td>
+			</tr>
+		</table>
+	</form>
+ 			</div>
+ 			<div class="col-4">
+ 				<h2> Расписание на ВТ </h2>
+	<table class="table table-bordered">
+		<tr>
+			<th rowspan="5"> ВТ </th>
+			<th> Время </th>
+			<th> ЧС </th>
+			<th> ЗН </th>
+		</tr>
+		<tr>
+			<td>08:30 - 10:05</td>
+			<td> </td>
+			<td rowspan="2">(лаб) Языки интернет-программирования</td>
+		</tr>
+		<tr>
+			<td>10:15 - 11:50</td>
+			<td>(сем) Электротехника</td>
+		</tr>
+		<tr>
+			<td>12:00 - 13:35</td>
+			<td colspan="2">(лек) Языки интернет программирования</td>
+		</tr>
+		<tr>
+			<td>13:50 - 15:25</td>
+			<td colspan="2">(лек) Электротехника</td>
+		</tr>
+	</table>
+ 			</div>
+ 		</div>
+ 		<div class="row">
+ 			<div class="col">
+ 				<pre>
+Варшава: Добрый день, <span class="green">Ник</span>. Как наши дела?
+Берлин: Вроде бы все по плану. <span class="green">Материалы по Навальному</span> готовы. Будут переданы в администрацию канцлера.Ожидаем ее заявление.
+				</pre>
+ 			</div>
+ 		</div>
+ 	</main>
+ 	<footer class="my-primary">
+ 		<div class="container">
+ 			<p class="footer-text">Footer</p>
+ 		</div>
+ 	</footer>
+</body>
+</html>

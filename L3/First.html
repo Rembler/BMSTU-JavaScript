@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru" id="start">
+<head>
+ 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<title>JavaScript practice</title>
+ 	<link href="http://e-learning.bmstu.ru/moodle/pluginfile.php/7546/mod_folder/content/0/bootstrap.min.css" rel="stylesheet">
+ 	<style>
+ 		.green 
+ 		{ 
+ 			color: #008000; 
+ 			font-weight: bold;
+ 		}
+ 		html 
+ 		{
+ 			position: relative;
+ 			min-height: 100%;
+ 		}
+ 		body { margin-bottom: 40px; }
+ 		main { margin-top: 15px; }
+ 		footer
+ 		{
+ 			height: 40px;
+ 			position: absolute;
+ 			bottom: 0;
+ 			width: 100%;
+ 		}
+ 		.my-primary 
+ 		{
+ 			background-color: #008000;
+ 			color: white;
+ 		}
+ 	</style>
+ 	<script>
+ 		function doit()
+ 		{
+ 			const first = document.getElementById("start");
+ 			var print = document.getElementById("result");
+ 			console.log(first.tagName + "\n");
+ 			print.innerHTML += first.tagName + "<br/>";
+ 			function tick(list, i = 1)
+ 			{
+ 				for (const elem of list)
+ 				{
+ 					if (elem.nodeType == 1 && elem.id != "result")
+ 					{
+ 						console.log(" ".repeat(2*i) + elem.tagName + "\n");
+ 						print.innerHTML += "&nbsp;".repeat(2*i) + elem.tagName + "<br/>";
+ 						if (elem.hasChildNodes())
+ 							tick(elem.childNodes, i + 1)
+ 					}
+ 				}
+ 			}
+ 			tick(first.childNodes);
+ 		}
+ 	</script>
+</head>
+<body>
+ 	<header>
+ 		<nav class="navbar navbar-expand-lg navbar-dark my-primary">
+ 			<a class="navbar-brand" href="#">Navbar</a>
+ 			<ul class="navbar-nav mr-auto">
+ 				<li class="nav-item active">
+ 					<a class="nav-link" href="#">Home
+ 						<span class="sr-only">(current)</span>
+ 					</a>
+ 				</li>
+ 				<li class="nav-item">
+ 					<a class="nav-link" href="#">Link</a>
+ 				</li>
+ 			</ul>
+ 		</nav>
+ 	</header>
+ 	<main class="container">
+ 		<div class="row">
+ 			<div class="col-4">
+ 				<img src=" http://e-learning.bmstu.ru/moodle/pluginfile.php/7546/mod_folder/content/0/avatar.jpg" alt="avatar" width="150" height="150">
+ 			</div>
+ 			<div class="col-8">
+ 				<p>"Но лишь в больные времена величья зрееют семена"<br />
+ 					<span class="green">Чуев А.С.</span></p>
+ 			</div>
+ 		</div>
+		<div class="row">
+ 			<div class="col-5">
+ 				<h2> Расписание на ВТ </h2>
+				<table class="table table-bordered">
+					<tr>
+						<th rowspan="5"> ВТ </th>
+						<th> Время </th>
+						<th> ЧС </th>
+						<th> ЗН </th>
+					</tr>
+					<tr>
+						<td>08:30 - 10:05</td>
+						<td> </td>
+						<td rowspan="2">(лаб) Языки интернет-программирования</td>
+					</tr>
+					<tr>
+						<td>10:15 - 11:50</td>
+						<td>(сем) Электротехника</td>
+					</tr>
+					<tr>
+						<td>12:00 - 13:35</td>
+						<td colspan="2">(лек) Языки интернет программирования</td>
+					</tr>
+					<tr>
+						<td>13:50 - 15:25</td>
+						<td colspan="2">(лек) Электротехника</td>
+					</tr>
+				</table>
+				<button class="btn btn-primary" onclick="doit();">Выполнить</button>	
+ 			</div>
+ 			<div class="col-4" id="result"> </div>
+ 		</div>
+ 	</main>
+ 	<footer class="my-primary">
+ 		<div class="container">
+ 			<p class="footer-text">Footer</p>
+ 		</div>
+ 	</footer>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Страница оформления заказа</title>
+	<meta charset="utf-8">
+	<link href="http://e-learning.bmstu.ru/moodle/pluginfile.php/7546/mod_folder/content/0/bootstrap.min.css" rel="stylesheet">
+	<style>
+		.image
+		{
+			width: 50px;
+			text-align: center;
+		}
+		img{border: 3px solid #343a40}
+		button
+		{
+			background-color: #343a40;
+			color: white;
+			font-size: 20px;
+		}
+		.add
+		{
+			border-collapse: separate;
+			border-spacing: 7px;
+			margin-left: auto;
+    		margin-right: auto;
+		}
+		body
+		{
+			overflow-x:hidden;
+		}
+		.footer
+		{
+			position: absolute;
+ 			bottom: 0;
+ 			width: 100%;
+		}
+		.big {width: 220px}
+		.interactive:hover
+		{
+			background-color: #343a40;
+			color: white;
+		}
+		output{margin-top: 10px}
+	</style>
+	<script>
+		function addnew()
+		{
+			var addname = document.getElementById("getname");
+			var addprice = document.getElementById("getprice");
+			if (addname.value != "" && !isNaN(addprice.value) && parseInt(addprice.value) > 0)
+			{
+				add(addname.value, addprice.value);
+			}
+			else
+			{
+				alert("Проверьте корректность введенных данных");
+			}
+			addname.value = "";
+			addprice.value = "";
+		}
+		function add(gname, gprice)
+		{
+			var output = document.getElementById("first");
+			var row = document.createElement("tr");
+			output.appendChild(row);
+			var cell1 = document.createElement("td");
+			var cell2 = document.createElement("td");
+			var cell3 = document.createElement("td");
+			var cell4 = document.createElement("td");
+			row.appendChild(cell1);
+			row.appendChild(cell2);
+			row.appendChild(cell3);
+			row.appendChild(cell4);
+			cell1.innerHTML = "<img alt='none' src='none.jpg'>"
+			cell1.classList.add("image");			
+			cell2.innerHTML = gname;
+			cell3.innerHTML = gprice;
+			cell4.innerHTML = "<button type='button' onclick='addodl(this);'>+</button>";
+			cell4.classList.add("image");
+		} 
+		function addtrash(gname, gprice)
+		{
+			var output = document.getElementById("second");
+			var row = document.createElement("tr");
+			output.appendChild(row);
+			var cell1 = document.createElement("td");
+			var cell2 = document.createElement("td");
+			cell2.classList.add("interactive");
+			row.appendChild(cell1);
+			row.appendChild(cell2);			
+			cell1.innerHTML = gname;
+			cell2.innerHTML = gprice;
+		}
+		function addodl(btn)
+		{
+			const cells = btn.parentNode.parentNode.getElementsByTagName("td");
+			addtrash(cells[1].innerHTML, parseInt(cells[2].innerHTML, 10));
+		}
+		function delall()
+		{
+			var output = document.getElementById("second");
+			while (output.getElementsByTagName("tr").length != 0) 
+			{
+				var oldchild = output.getElementsByTagName("tr");
+				output.removeChild(oldchild[oldchild.length - 1]);
+			}
+			var target = document.getElementById("result");
+			target.innerHTML = 0;
+		}
+		function calc()
+		{
+			var target = document.getElementById("result");
+			var res = document.getElementsByClassName("interactive");
+			count = 0;
+			for (var i = 0; i < res.length; i++) 
+			{
+				count = count + parseInt(res[i].innerHTML);
+			}
+			target.innerHTML = count + " золота";
+			//target.innerHTML = res.length;
+		}
+	</script>
+</head>
+<body>
+	<main>
+		<div class="row">
+			<div class="col-6	">
+				<table class="table" id="first">
+					<thead class="thead-dark">
+						<tr>
+							<th>Изображение</th>
+							<th>Наименование</th>
+							<th>Цена</th>
+							<th>Добавить</th>
+						</tr>
+					</thead>
+					<tr>
+						<td class="image"><img alt="bruto" src="bruto.jpg"></td>
+						<td>Могучий вьючный брутозавр</td>	
+						<td>5000000</td>
+						<td class="image"><button type="button" onclick="addodl(this);">+</button></td>
+					</tr>
+					<tr>
+						<td class="image"><img alt="exo" src="exo.jpg"></td>
+						<td>Экзоскелет озаренных</td>
+						<td>500000</td>
+						<td class="image"><button type="button" onclick="addodl(this);">+</button></td>
+					</tr>
+					<tr>
+						<td class="image"><img alt="frog" src="frog.jpg"></td>
+						<td>Зеленый болотный прыгун</td>
+						<td>333333</td>
+						<td class="image"><button type="button" onclick="addodl(this);">+</button></td>	
+					</tr>
+					<tr>
+						<td class="image"><img alt="spider" src="spider.jpg"></td>
+						<td>Вдова кровавого клыка</td>	
+						<td>2000000</td>
+						<td class="image"><button type="button" onclick="addodl(this);">+</button></td>
+					</tr>
+					<tr>
+						<td class="image"><img alt="tiger" src="tiger.jpg"></td>
+						<td>Стремительный зульский тигр</td>
+						<td>10000000</td>
+						<td class="image"><button type="button" onclick="addodl(this);">+</button></td>	
+					</tr>
+				</table>
+			</div>
+			<div class="col-4">
+				<table id="second" class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th colspan="2">Корзина</th>
+						</tr>
+					</thead>	
+				</table>
+			</div>
+			<div class="col-2">
+				<button type="button" onclick="calc();">Общая стоимость</button>
+				<br/>
+				<output id="result">0</output>
+			</div>			
+		</div>
+		<div class="footer">
+			<div class="col-6">
+				<form>
+					<table class="add">
+						<tr>
+							<td>Название</td>
+							<td><input id="getname" type="text" name="gname"></td>
+							<td colspan="2" class="image"><button class="big" type="button" onclick="addnew();">Добавить в список</button></td>
+						</tr>
+						<tr>
+							<td>Цена</td>
+							<td><input id="getprice" type="text" name="gcost"></td>
+							<td colspan="2" class="image"><button class="big" type="button" onclick="delall();">Очистить корзину</button></td>
+						</tr>
+					</table>
+				</form>
+			</div>		
+		</div>
+	</main>
+</body>
+</html>
